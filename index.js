@@ -9,28 +9,51 @@ import {copyTemplate} from './utils/templates.js';
 import {handleError} from './utils/errors.js';
 import {getDirName} from './utils/files.js';
 import {ask} from './utils/ask.js';
+import chalk from 'chalk';
+import alert from 'cli-alerts';
 
-const { prompt } = enquirer;
+const { green: G, dim: D } = chalk;
 
 const __dirname = getDirName(import.meta.url);
 
 init();
 
-const { answer: name } = await ask({ message: 'CLI name?', hint: '(kebab-case only' });
-const { answer: description } = await ask({ message: 'CLI description?' });
-const { answer: version } = await ask({ message: 'CLI version?', initial: '0.0.1' });
+const {
+  name,
+  description,
+  version,
+  authorName,
+  authorEmail,
+  authorUrl,
+  license,
+  command,
+} = await ask();
 
 const vars = {
   name,
   description,
   version,
+  authorName,
+  authorEmail,
+  authorUrl,
+  license,
+  command: command || name
 };
-const inDir = path.join(__dirname, 'template');
-const outDir = path.join(process.cwd(), vars.name);
 
-const files = await copyTemplate(inDir, outDir, vars);
+
+const inDirPath = path.join(__dirname, 'template');
+const outDirPath = path.join(process.cwd(), vars.name);
+const outDir = `./${vars.name}`;
+
+const files = await copyTemplate(inDirPath, outDirPath, vars);
 
 const fileNames = files.map(filePath => basename(filePath));
 
-console.log(`Created files inside ./${vars.name}:`);
-console.log(fileNames.join('\n'));
+console.log(D(`\nCreated files inside ${G(outDir)}:`));
+console.log(fileNames.map(filename => '✅ '.concat(filename)).join('\n'));
+
+alert({
+  type: 'success',
+  name: 'All done!',
+  msg: `${fileNames.length} files created in ${outDir} directory.`
+})
