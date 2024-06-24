@@ -1,0 +1,23 @@
+{
+  "name": "cli-creator",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "cli-creator": "./index.js",
+    "ncli": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cli-alerts": "^1.2.2",
+    "cli-welcome": "^2.2.3",
+    "copy-template-dir": "^1.4.0",
+    "enquirer": "^2.4.1"
+  }
+}
