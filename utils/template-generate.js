@@ -38,6 +38,8 @@ export const templateGenerate = async (answers) => {
   console.log(`Linking the CLI as "${answers.command}"...`);
   await execa('npm', ['link'], { cwd: outDirPath });
 
+  console.log(`Adding execute rights...`);
+  await execa('chmod', ['+x', 'index.js'], { cwd: outDirPath });
 
   alert({
     type: 'success',

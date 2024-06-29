@@ -2,6 +2,7 @@
   "name": "{{name}}",
   "description": "{{description}}",
   "version": "{{version}}",
+  "type": "module",
   "bin": {
     "{{name}}": "index.js",
     "{{command}}": "index.js"

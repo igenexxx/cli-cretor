@@ -30,7 +30,7 @@ const commands = {
   }
 };
 
-const helpText = ({flags, commands, command}) => {
+const helpText = ({ flags, commands }) => {
   const shortFlagLength = 3;
   const longestFlag = Object.keys(flags).reduce((acc, flag) => flag.length > acc ? flag.length : acc, 0) + shortFlagLength;
   const longestCommand = Object.keys(commands).reduce((acc, command) => command.length > acc ? command.length : acc, 0);
@@ -48,10 +48,10 @@ const helpText = ({flags, commands, command}) => {
   }).join('\n');
 
   return `
-${green.inverse(command)} - CLI tool to generate a new project
+${green.inverse("{{command}}")} - CLI tool to generate a new project
 
 Usage
-  $ ${command} ${green('[options]')} ${yellow('<input>')}
+  $ {{command}} ${green('[options]')} ${yellow('<input>')}
 
 ${flagText}
 
@@ -59,7 +59,7 @@ ${commandText}
 `;
 };
 
-export const cli = meow(helpText({flags, commands, command: 'cli-img'}), {
+export const cli = meow(helpText({flags, commands }), {
   importMeta: import.meta,
   flags,
   inferType: true,
