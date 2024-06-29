@@ -6,6 +6,10 @@
     "{{name}}": "index.js",
     "{{command}}": "index.js"
   },
+  "scripts": {
+    "format": "prettier --write \"**/*.{js,json}\"",
+    "lint": "eslint ."
+  },
   "author": {
     "name": "{{authorName}}",
     "email": "{{authorEmail}}",

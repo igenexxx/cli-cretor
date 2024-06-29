@@ -17,7 +17,11 @@
   "dependencies": {
     "cli-alerts": "^1.2.2",
     "cli-welcome": "^2.2.3",
+    "conf": "^13.0.1",
     "copy-template-dir": "^1.4.0",
-    "enquirer": "^2.4.1"
+    "enquirer": "^2.4.1",
+    "execa": "^9.3.0",
+    "meow": "^13.2.0",
+    "ora": "^8.0.1"
   }
 }
